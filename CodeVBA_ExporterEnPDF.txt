@@ -1,0 +1,16 @@
+Sub ExporterEnPDF()
+    Dim NomFichier As String
+    Dim Chemin As String
+    
+    ' Définir le chemin où enregistrer le PDF (même dossier que le fichier Excel)
+    Chemin = ThisWorkbook.Path & "\"
+    
+    ' Définir le nom du fichier avec la date actuelle
+    NomFichier = Chemin & ActiveSheet.Name & "_" & Format(Date, "yyyy-mm-dd") & ".pdf"
+    
+    ' Exporter la feuille active en PDF
+    ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, Filename:=NomFichier, Quality:=xlQualityStandard, _
+                                    IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=True
+                                    
+    MsgBox "PDF généré avec succès : " & NomFichier, vbInformation, "Export Terminé"
+End Sub
